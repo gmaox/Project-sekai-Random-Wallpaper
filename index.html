@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>世界计划随机卡牌</title>
+
+<body style="background-image:url('1.png');
+	background-attachment: fixed;
+    background-position: top left;
+    background-size: 100% 100%;
+    min-width: 1000px;
+    background-repeat: no-repeat;">
+    <script type="text/javascript">
+        var u = Math.round(Math.random() * 25 + 1);
+        if (u < 10) {
+            u = "0" + u
+        };
+        var bodyBgs = [];
+        for (var i = 1;
+            i < 24;
+            i++) {
+            if (i < 10) {
+                i = "0" + i
+            };
+            bodyBgs[i] = "http://storage.sekai.best/sekai-assets/character/member/res0" + u + "_no0" + i + "_rip/card_normal.png";
+        };
+        var randomBgIndex = Math.round(Math.random() * 23);
+        document.write('<img src="');
+        document.write(bodyBgs[randomBgIndex]);
+        document.write('" style="position: fixed;top: 0; left: 0;min-width: 100%;min-height: 100%;" /><a href="index.html" style="float:right;">');
+        document.write(u);
+        document.write('-');
+        document.write(randomBgIndex);
+        document.write('</a>');
+        if (bodyBgs[randomBgIndex] == undefined) {
+            document.write('出错了，正在刷新'); location.reload();
+            var img = document.querySelector('img');
+            img.addEventListener('error', function () {
+                location.reload();
+            });
+        };
+        /*setTimeout(function(){
+            window.location.reload();
+        }, 6400000); */
+        if (navigator.onLine) { } else { setInterval(alertFunc, 3000); }
+        function alertFunc() { if (navigator.onLine) { window.location.reload(); } }
+    </script>
+    </head>
+
+    <body>
+    </body>
+
+</html>
